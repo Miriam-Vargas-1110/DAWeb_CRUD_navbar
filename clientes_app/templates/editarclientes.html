@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block cuerpo %} 
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Datos</h2>
+        <!--Aqui codigo tarjeta -->
+        <div class="card"><!-- la tarjeta -->
+            <div class="card-body">
+                <form action="/editarclientes/" method="POST"> {% csrf_token %} <!-- falta action-->
+                    <div class="form-group">
+                        <input type="text" id="txtid" name="txtid" class="form-control" placeholder="id Cliente" minlength="1" maxlength="6" value="{{ misclientes.id }}" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombres" name="txtnombres" class="form-control" placeholder="Nombres del Cliente"  maxlength="50" value="{{ misclientes.nombres }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtapellidos" name="txtapellidos" class="form-control" placeholder="Apellidos del Cliente"  maxlength="15" value="{{ misclientes.apellidos }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtnumero" name="txtnumero" class="form-control" placeholder="Numero del Cliente"  maxlength="50" value="{{ misclientes.numero }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzdireccion" name="skzdireccion" class="form-control" placeholder="Direccion del Cliente"  maxlength="25" value="{{ misclientes.direccion }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzcorreo" name="skzcorreo" class="form-control" placeholder="Correo del Cliente"  maxlength="100" value="{{ misclientes.correo }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzestado" name="skzestado" class="form-control" placeholder="Estado del Cliente"  maxlength="50" value="{{ misclientes.estado }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzciudad" name="skzciudad" class="form-control" placeholder="Ciudad del Cliente"  maxlength="50" value="{{ misclientes.ciudad }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="skzcodigop" name="skzcodigop" class="form-control" placeholder="codigo postal del Cliente"  maxlength="50" value="{{ misclientes.codigop }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <div class="form-group py-2">
+                            <button type="submit" class="btn btn-primary">Guardar Clientes</button>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div> <!-- la tarjeta -->
+        <!--Aqui codigo tarjeta -->
+    </div>
+
+</div><!-- fila en editar-->
+
+
+
+{% endblock %}

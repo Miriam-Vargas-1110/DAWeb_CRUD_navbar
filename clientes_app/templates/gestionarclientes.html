@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+{% load static %}
+    <div class="row"><!-- la fila -->
+    <div class="col-sm-12 col-md-4 col-lg-4 cold-xl-4"> <!-- columna izquierda -->
+
+        <h1> Clientes 🦄</h1>
+        <div class="card"><!-- la tarjeta -->
+            <div class="card-body">
+                <form action="registrarclientes/" method="POST"> {% csrf_token %} <!-- falta action-->
+                    <div class="form-group">
+                        <input type="text" id="txtid" name="txtid" class="form-control" placeholder="id Cliente" minlength="1" maxlength="6" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombres" name="txtnombres" class="form-control" placeholder="Nombres del Cliente"  maxlength="50" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtapellidos" name="txtapellidos" class="form-control" placeholder="Apellidos del Cliente"  maxlength="15" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtnumero" name="txtnumero" class="form-control" placeholder="Numero del Cliente"  maxlength="50" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzdireccion" name="skzdireccion" class="form-control" placeholder="Direccion del Cliente"  maxlength="25" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzcorreo" name="skzcorreo" class="form-control" placeholder="Correo del Cliente"  maxlength="100" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzestado" name="skzestado" class="form-control" placeholder="Estado del Cliente"  maxlength="50" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzciudad" name="skzciudad" class="form-control" placeholder="Ciudad del Cliente"  maxlength="50" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="skzcodigop" name="skzcodigop" class="form-control" placeholder="codigo postal del Cliente"  maxlength="50" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <div class="form-group py-2">
+                            <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div> <!-- la tarjeta -->
+
+    </div><!-- columna izquierda-->
+
+
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"> <!-- columna derecha -->
+    <h1> Listado de Clientes 🌺</h1>
+    <img class="w-50" src="{% static 'img/clientes.png' %}" alt="miriam" width="100" height="200">
+    <!--   La tabla  -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">id</th>
+                <th scope="col">nombres</th>
+                <th scope="col">apellidos</th>
+                <th scope="col">numero</th>
+                <th scope="col">direccion</th>
+                <th scope="col">correo electronico</th>
+                <th scope="col">estado</th>
+                <th scope="col">ciudad</th>
+                <th scope="col">codigo postal</th>
+                <th> Opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for c in misclientes %}
+            <tr>
+                <td>
+                    {{forloop.counter}}
+                    <td> {{c.id}} </td>
+                    <td> {{c.nombres}} </td>
+                    <td> {{c.apellidos}} </td>
+                    <td> {{c.numero}} </td>
+                    <td> {{c.direccion}} </td>
+                    <td> {{c.correo}} </td>
+                    <td> {{c.estado}} </td>
+                    <td> {{c.ciudad}} </td>
+                    <td> {{c.codigop}} </td>
+                    <td> <a href="seleccionarclientes/{{c.id}}" class="btn btn-info">Editar</a></td>
+                    <td> <a href="borrarclientes/{{c.id}}" class="btn btn-danger">Borrar</a></td>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <!--   La tabla  -->
+    </div> <!-- columna derecha -->
+</div> <!-- la fila -->
+
+{% endblock  %}
