@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block cuerpo %} 
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Datos</h2>
+        <!--Aqui codigo tarjeta -->
+        <div class="card"><!-- la tarjeta -->
+            <div class="card-body">
+                <form action="/editarsucursal/" method="POST"> {% csrf_token %} <!-- falta action-->
+                    <div class="form-group">
+                        <input type="text" id="txtid" name="txtid" class="form-control" placeholder="id Sucursal" minlength="1" maxlength="6" value="{{ missucursales.id }}" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Nombres de la sucursal"  maxlength="50" value="{{ missucursales.nombre }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" placeholder="Direccion"  maxlength="50" value="{{ missucursales.direccion }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skznumero" name="skznumero" class="form-control" placeholder="Numero de la sucursal"  maxlength="50" value="{{ missucursales.numero }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="skzidempleados" name="skzidempleados" class="form-control" placeholder="id del empleado"  maxlength="25" value="{{ missucursales.idempleados }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzhorario" name="skzhorario" class="form-control" placeholder="Horario de la sucursal"  maxlength="100" value="{{ missucursales.horario }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="skzcorreo" name="skzcorreo" class="form-control" placeholder="Correo de la sucursal"  maxlength="50" value="{{ missucursales.correo }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <div class="form-group py-2">
+                            <button type="submit" class="btn btn-primary">Guardar Sucursal</button>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div> <!-- la tarjeta -->
+        <!--Aqui codigo tarjeta -->
+    </div>
+
+</div><!-- fila en editar-->
+
+
+
+{% endblock %}
